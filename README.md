@@ -13,7 +13,7 @@ SMC3_chip_seq.bed | BED | Chip-seq data of SMC3 in HeLa cells synchronized to G2
 CTCF_chip_seq.bed | BED | Chip-seq data of CTCF in HeLa cells synchronized to G2
 RAD51_chip-seq.bw | bigWig | Chip-seq data of RAD51 in U2OS cells expressing a restriction enzyme
 XRCC4_chip-seq.bw | bigWig | Chip-seq data of XRCC4 in U2OS cells expressing a restriction enzyme
-Restriction_cut_sites.bed | BED | Locations where the restriction enzyme in U2OS cells is introducing cuts (only a subset is provided)
+Restriction_cut_sites.bed | BED | Locations where the restriction enzyme in U2OS cells is introducing cuts (only a 2 of the original 40 sites provided)
 SMC3_chip_seq.bw | bigWig | BigWig file of the SMC3 chip-seq data in HeLa cells synchronized to G2
 
 ## Notebooks
@@ -58,8 +58,8 @@ Similar to bedtools, but implements interfaces for downloading data from the [UC
 *(c)* Plot the distribution of distances between peaks. (Take care that you do not calculate distances accross chromosomes!)
 
 ### Example 2
-This example uses chip-seq data from this [paper](https://www.nature.com/articles/nsmb.2796). In short, they have a cell-line with an inducible restriction enzyme that will cut ~100x in the human genome. In cells, where this restriction enzyme was induced, they perforemd Chip-seq against XRCC4 (a part of the DNA ligase that repairs NHEJ junctions) and Rad51 (a central part of the homology directed repair machinery to estimate the DNA pathway choice at each location.
+This example uses chip-seq data from this [paper](https://www.nature.com/articles/nsmb.2796). In short, they have a cell-line with an inducible restriction enzyme that will cut ~40 times in the human genome. In cells, where this restriction enzyme was induced, they perforemd Chip-seq against XRCC4 (a part of the DNA ligase that repairs NHEJ junctions) and Rad51 (a central part of the homology directed repair machinery to estimate the DNA pathway choice at each location.
 
-*(a)* Plot the distribution of XRCC4 and Rad51 at the provided restriction cut-sites in a 100bp window around the cut-site (-500bp to +500bp). Can you guess which sites are preferrably repaired by HDR pr NHEJ.
+*(a)* Plot the distribution of XRCC4 and Rad51 at the two provided restriction cut-sites in a 100bp window around the cut-site (-500bp to +500bp). Can you guess which site is preferrably repaired by HDR and which by NHEJ?
 
 *(b)* Since Rad51 is a protein that binds in a rather broad way to DNA, it might be more useful to zoom out our view-points a little bit. Plot the distribution of XRCC4 and Rad51 at 200kb around each cut-sites (-100kb to +100kb). Why does your plotting function hang? What could be a solution? (Hint: You may want to use either [np.digitize](https://docs.scipy.org/doc/numpy/reference/generated/numpy.digitize.html) or [pandas.cut](https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.cut.html))
